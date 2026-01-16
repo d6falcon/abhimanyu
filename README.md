@@ -111,7 +111,7 @@ abhimanyu/
 │   ├── documents/               # Document storage (exploitable)
 │   └── uploads/                 # Upload directory
 │
-├── challenges/                 # SPOILERS! - CTF challenge walkthrough documentation
+├── walkthrough/                # SPOILERS! - CTF challenge walkthrough documentation
 │   ├── WALKTHROUGH.md          # Complete exploitation walkthrough
 │   ├── LAYER1_LFI.md           # Layer 1 challenge guide
 │   ├── LAYER2_ESCAPE.md        # Layer 2 challenge guide
@@ -124,6 +124,7 @@ abhimanyu/
 ├── deploy-to-gke.sh           # GKE deployment script
 ├── k8s-deployment.yaml        # Kubernetes manifests
 ├── BLOCK_DIAGRAM.png          # Functional Diagram explaining the logic (may not be accurate on labels as the attack path dev evolves)
+├── ATTACK_FLOW.png            # Explains Attack Chain
 ├── README.md                  # Originally an excalidraw file but converted to png
 ├── CHAKRAVYUHA_DIAGRAM.png    # Overview diagram
 ├── README.md                  # This file
