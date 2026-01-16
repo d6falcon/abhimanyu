@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File - Chakravyuha</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #00ff00;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 500px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+        }
+        
+        h1 {
+            margin-bottom: 30px;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        input[type="file"],
+        input[type="submit"] {
+            padding: 10px;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            background: rgba(0, 255, 0, 0.1);
+            color: #00ff00;
+            cursor: pointer;
+        }
+        
+        input[type="submit"]:hover {
+            background: #00ff00;
+            color: #1a1a2e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📤 Upload File</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <input type="submit" value="Upload">
+        </form>
+        <a href="/" style="color: #00ff00; text-decoration: none; margin-top: 20px;">← Back to Home</a>
+    </div>
+</body>
+</html>

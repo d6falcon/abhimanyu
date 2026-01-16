@@ -80,11 +80,11 @@ gcloud config set project YOUR_PROJECT_ID
 ### Option 1: Using the Deployment Script (Recommended)
 
 ```bash
-# Set environment variables
+# Set environment variables - enter your project id
 export GCP_PROJECT_ID="your-gcp-project-id"
 export GKE_CLUSTER_NAME="abhimanyu-ctf-cluster"
-export GKE_REGION="europe-west1"
-export GKE_ZONE="europe-west1-b"
+export GKE_REGION="europe-west2"
+export GKE_ZONE="europe-west2-b"
 
 # Make script executable
 chmod +x deploy-to-gke.sh
@@ -96,7 +96,7 @@ chmod +x deploy-to-gke.sh
 The script will:
 1. Verify all prerequisites
 2. Authenticate with GCP
-3. Create a GKE cluster in europe-west1
+3. Create a GKE cluster in europe-west2
 4. Build and push Docker image
 5. Deploy to Kubernetes
 6. Display service endpoint
@@ -111,8 +111,8 @@ gcloud auth configure-docker gcr.io
 
 # Step 2: Create GKE cluster in europe-west region
 gcloud container clusters create abhimanyu-ctf-cluster \
-  --region=europe-west1 \
-  --zone=europe-west1-b \
+  --region=europe-west2 \
+  --zone=europe-west2-b \
   --num-nodes=2 \
   --enable-autoscaling \
   --min-nodes=2 \
@@ -120,7 +120,7 @@ gcloud container clusters create abhimanyu-ctf-cluster \
 
 # Step 3: Get cluster credentials
 gcloud container clusters get-credentials abhimanyu-ctf-cluster \
-  --region=europe-west1 \
+  --region=europe-west2 \
   --project=YOUR_PROJECT_ID
 
 # Step 4: Build Docker image
@@ -203,6 +203,7 @@ Adjust these values based on your CTF challenge requirements.
 
 This deployment is configured to run **only** in europe-west regions:
 - **europe-west1** (Belgium)
+- **europe-west2** (London) - currently set to this
 - **europe-west4** (Netherlands)
 - **europe-west6** (Switzerland)
 
@@ -217,7 +218,7 @@ To remove the deployment:
 kubectl delete namespace ctf-namespace
 
 # Delete the GKE cluster
-gcloud container clusters delete abhimanyu-ctf-cluster --region=europe-west1
+gcloud container clusters delete abhimanyu-ctf-cluster --region=europe-west2
 
 # Delete GCR images
 gcloud container images delete gcr.io/YOUR_PROJECT_ID/abhimanyu:latest

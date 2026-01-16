@@ -47,8 +47,9 @@ spec:
               - key: topology.kubernetes.io/region
                 operator: In
                 values:
-                - europe-west1
+                - europe-west2
                 - europe-west4
+                - europe-west1
                 - europe-west6
       
       # Security context
@@ -228,7 +229,67 @@ metadata:
   name: challenge-data
   namespace: ctf-namespace
 data:
-  # Add your challenge files as key-value pairs
+  # Add your challenge files as key-value pairs - MAHABHARAT!
   README: |
     Abhimanyu CTF Challenge
     Welcome to the Chakravyuha Challenge!
+  
+  LAYER4_FLAG: |
+    CTF{COMPROMISED_KUBERNETES_CLUSTER_LAYER4}
+  
+  LAYER4_HINT: |
+    You have successfully exploited the Kubernetes cluster!
+    You accessed ConfigMaps using your service account token.
+    In a real cluster, you could escalate further by:
+    1. Creating privileged pods
+    2. Accessing cluster secrets
+    3. Modifying RBAC roles
+    4. Escaping to the host node
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: ctf-limited-access
+  namespace: ctf-namespace
+rules:
+# Allow reading ConfigMaps (Level 1 access)
+- apiGroups: [""]
+  resources: ["configmaps"]
+  verbs: ["get", "list"]
+# Allow reading Pods (reconnaissance)
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list"]
+# Allow reading Services (network discovery)
+- apiGroups: [""]
+  resources: ["services"]
+  verbs: ["get", "list"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: ctf-limited-access-binding
+  namespace: ctf-namespace
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: ctf-limited-access
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: ctf-namespace
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: layer4-secrets
+  namespace: ctf-namespace
+type: Opaque
+stringData:
+  LAYER4_ADMIN_TOKEN: "CTF{LAYER4_SECRET_ADMIN_TOKEN_xyz123}"
+  LAYER4_API_KEY: "ctf_k8s_api_key_secret_456"
+  CLUSTER_ENCRYPTION_KEY: "super_secret_cluster_encryption_key_789"
+  DATABASE_BACKUP_PASS: "backup_admin_password_layer4"

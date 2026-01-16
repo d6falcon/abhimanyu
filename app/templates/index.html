@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chakravyuha - Abhimanyu CTF</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #00ff00;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        
+        .wheel {
+            text-align: center;
+            font-size: 3em;
+            margin: 20px 0;
+            animation: spin 4s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .intro {
+            line-height: 1.8;
+            margin: 30px 0;
+            border-left: 3px solid #00ff00;
+            padding-left: 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 30px 0;
+        }
+        
+        a {
+            color: #00ff00;
+            text-decoration: none;
+            padding: 10px;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        a:hover {
+            background: #00ff00;
+            color: #1a1a2e;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+        
+        .ring-info {
+            margin-top: 30px;
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CHAKRAVYUHA</h1>
+        <div class="wheel">⚙️</div>
+        
+        <div class="intro">
+            <p>Welcome to the <strong>Chakravyuha</strong> - a wheel formation of challenges.</p>
+            <p style="margin-top: 15px;">In the Mahabharata, Abhimanyu was trapped in the Chakravyuha formation and had to navigate through concentric layers of warriors to escape.</p>
+            <p style="margin-top: 15px;">You must do the same. Navigate through the layers to reach the core and capture the flag.</p>
+        </div>
+        
+        <div class="nav-links">
+            <a href="/documents">📄 Challenge Documents (Layer 1)</a>
+            <a href="/view?file=README.md">📖 View Documentation</a>
+            <a href="/upload">📤 Upload File</a>
+            <a href="/source">🔍 View Source Code</a>
+            <a href="/health">💓 Health Check</a>
+        </div>
+        
+        <div class="ring-info">
+            <p><strong>Layer 1 (Outer Ring):</strong> Local File Inclusion vulnerability in web app</p>
+            <p><strong>Hint:</strong> Try path traversal techniques to read system files...</p>
+        </div>
+    </div>
+</body>
+</html>

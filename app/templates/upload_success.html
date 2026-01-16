@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Success - Chakravyuha</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #00ff00;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 500px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #00ff00;
+        }
+        
+        .filename {
+            padding: 15px;
+            background: rgba(0, 255, 0, 0.1);
+            margin: 20px 0;
+            border-radius: 5px;
+            word-break: break-all;
+        }
+        
+        a {
+            color: #00ff00;
+            text-decoration: none;
+            margin-top: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✅ Upload Successful</h1>
+        <p>File uploaded: </p>
+        <div class="filename">{{ filename }}</div>
+        <a href="/">← Back to Home</a>
+    </div>
+</body>
+</html>

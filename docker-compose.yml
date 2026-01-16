@@ -1,0 +1,91 @@
+version: '3.8'
+
+services:
+  # Layer 1: Vulnerable Web Application
+  chakravyuha-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: chakravyuha-app
+    container_name: chakravyuha-web
+    ports:
+      - "5000:5000"
+      - "8080:8080"
+    environment:
+      - FLASK_APP=app/app.py
+      - FLASK_ENV=production
+      - DEBUG=0
+      - REDIS_HOST=chakravyuha-redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=ctf_redis_pass_123
+      - POSTGRES_HOST=chakravyuha-db
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=ctf_db
+      - POSTGRES_USER=ctf_user
+      - POSTGRES_PASSWORD=ctf_db_pass_456
+    volumes:
+      - ./app/documents:/app/documents
+      - ./app/uploads:/app/uploads
+      - ./challenges:/challenges:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - chakravyuha-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    depends_on:
+      - chakravyuha-redis
+      - chakravyuha-db
+    labels:
+      - "app=chakravyuha"
+      - "layer=outer-ring"
+    cap_add:
+      - SYS_PTRACE
+      - SYS_ADMIN
+    security_opt:
+      - apparmor=unconfined
+
+  # Layer 2: Redis Service (Internal Access)
+  chakravyuha-redis:
+    image: redis:7-alpine
+    container_name: chakravyuha-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - chakravyuha-network
+    command: redis-server --requirepass ctf_redis_pass_123
+    labels:
+      - "app=chakravyuha"
+      - "layer=middle-ring"
+
+  # Layer 3: Database Service
+  chakravyuha-db:
+    image: postgres:15-alpine
+    container_name: chakravyuha-db
+    environment:
+      - POSTGRES_DB=ctf_db
+      - POSTGRES_USER=ctf_user
+      - POSTGRES_PASSWORD=ctf_db_pass_456
+    ports:
+      - "5432:5432"
+    networks:
+      - chakravyuha-network
+    volumes:
+      - chakravyuha-db-data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    labels:
+      - "app=chakravyuha"
+      - "layer=inner-ring"
+
+networks:
+  chakravyuha-network:
+    driver: bridge
+    labels:
+      - "app=chakravyuha"
+
+volumes:
+  chakravyuha-db-data:
+    driver: local

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Author : Srikanth Dabbiru d6falcon
 # GKE Deployment Script for Abhimanyu CTF Machine
 # This script automates the deployment to GKE in the europe-west region
 
@@ -8,8 +8,8 @@ set -e
 # Configuration
 PROJECT_ID=${GCP_PROJECT_ID:-"your-gcp-project-id"}
 CLUSTER_NAME=${GKE_CLUSTER_NAME:-"abhimanyu-ctf-cluster"}
-REGION=${GKE_REGION:-"europe-west1"}
-ZONE=${GKE_ZONE:-"europe-west1-b"}
+REGION=${GKE_REGION:-"europe-west2"}
+ZONE=${GKE_ZONE:-"europe-west2-b"}
 DOCKER_REGISTRY="gcr.io"
 IMAGE_NAME="abhimanyu"
 IMAGE_TAG="${1:-latest}"
@@ -175,7 +175,7 @@ show_deployment_status() {
     kubectl logs -n ctf-namespace -l app=abhimanyu-ctf --tail=50
 }
 
-# Main execution
+# Main execution - single click - fasaak!
 main() {
     log_info "Starting GKE deployment process..."
     log_info "Project ID: $PROJECT_ID"

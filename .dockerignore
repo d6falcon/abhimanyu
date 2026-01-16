@@ -38,8 +38,7 @@ node_modules/
 npm-debug.log
 yarn-error.log
 
-# Documentation
-*.md
+# Documentation (keep README for context)
 docs/
 
 # CI/CD
@@ -47,6 +46,16 @@ docs/
 .gitlab-ci.yml
 .travis.yml
 Jenkinsfile
+
+# Local testing
+docker-compose.yml
+.env
+.env.local
+
+# App-specific excludes
+app/uploads/*
+app/documents/*
+!app/documents/challenge.txt
 
 # Docker
 Dockerfile
