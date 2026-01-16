@@ -1,6 +1,7 @@
 # abhimanyu - Chakravyuha CTF 🎯 
 
 This is a **container-based Capture the Flag (CTF)** challenge based on the Mahabharata's Chakravyuha formation.
+![alt text](https://github.com/d6falcon/abhimanyu/blob/main/CHAKRAVYUHA_DIAGRAM.png?raw=true)
 
 ## Challenge Theme
 
@@ -190,8 +191,10 @@ You've successfully completed Chakravyuha when you can demonstrate:
 3. **Layer 3:** List Kubernetes secrets using service account token
 4. **Layer 4:** Retrieve the final flag from restricted namespace
 
-## ATTAK FLOW
+## ATTACK Flow
 ![alt text](https://github.com/d6falcon/abhimanyu/blob/main/ATTACK_FLOW.png?raw=true)
+## Architecture Block Diagram
+![alt text](https://github.com/d6falcon/abhimanyu/blob/main/BLOCK_DIAGRAM.png?raw=true)
 
 ##  License
 
