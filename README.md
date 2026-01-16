@@ -190,6 +190,9 @@ You've successfully completed Chakravyuha when you can demonstrate:
 3. **Layer 3:** List Kubernetes secrets using service account token
 4. **Layer 4:** Retrieve the final flag from restricted namespace
 
+## ATTAK FLOW
+![alt text](https://github.com/d6falcon/abhimanyu/blob/main/ATTACK_FLOW.png?raw=true)
+
 ##  License
 
 This CTF challenge is created for educational and training purposes which is another reason why most passwords are plain text. Contributions via PR are most welcome
