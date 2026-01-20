@@ -216,5 +216,5 @@ Sahiba [Aditya Rikhari]
 - [OWASP Path Traversal](https://owasp.org/www-community/attacks/Path_Traversal)
 - [Docker Security](https://docs.docker.com/engine/security/)
 - [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
-- [Container Security Best Practices](https://cheatsheetseries.owasp.org/cheatsheets/Container_Security_Cheat_Sheet.html)
+- [Container Security Best Practices](https://cloud.google.com/blog/products/gcp/exploring-container-security-isolation-at-different-layers-of-the-kubernetes-stack)
 
